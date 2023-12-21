@@ -1,0 +1,80 @@
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (!env.IsDevelopment())
+            {
+            }
+
+            app.UseStatusCodePages(async context =>
+            {
+                if(context.HttpContext.Response.StatusCode == 401)
+                {
+                    // Customize the response for 401 Unauthorized status code
+                    context.HttpContext.Response.ContentType = "application/json";
+                    var error = new ErrorDetails()
+                    {
+                        StatusCode = context.HttpContext.Response.StatusCode,
+                        Message = "Unauthorize: You do not have permission to access this resource."
+                    };
+                    await context.HttpContext.Response.WriteAsync(error.ToString());
+                }
+
+                if(context.HttpContext.Response.StatusCode == 403)
+                {
+                    // Customize the response for 403 Forbidden status code
+                    context.HttpContext.Response.ContentType = "application/json";
+                    var error = new ErrorDetails()
+                    {
+                        StatusCode = context.HttpContext.Response.StatusCode,
+                        Message = "Forbidden: You do not have sufficient privileges to access this resource."
+                    };
+                    await context.HttpContext.Response.WriteAsync(error.ToString());
+                }
+            });
+
+            app.UseMiddleware<GlobalExceptionMiddleware>();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FTask.API v1"));
+
+            app.UseHttpsRedirection();
+
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[] {new AuthorizationFilter()}
+            });
+
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
+
+            app.UseRouting();
+            app.UseRateLimiter();
+            app.UseRequestLocalization();
+
+            app.UseCors("All");
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+            app.UseSession();
+            app.UseResponseCompression();
+            app.UseResponseCaching();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+
+                endpoints.MapGet("/login-google", context =>
+                {
+                    var linkGenerator = context.RequestServices.GetRequiredService<LinkGenerator>();
+                    var redirectUri = linkGenerator.GetUriByAction(context, "UserInformation", "TestAuth");
+
+                    return AuthenticationHttpContextExtensions
+                        .ChallengeAsync(context, "google",
+                        new AuthenticationProperties
+                        {
+                            RedirectUri = redirectUri,
+                        });
+                });
+            });
+        }
