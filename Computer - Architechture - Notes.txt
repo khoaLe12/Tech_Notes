@@ -1,0 +1,30 @@
+1. Von Neumann Architecture: Also known as the Princeton architecture, it is a computer architecture based on a 1945 description by the mathematician and physicist John von Neumann. This is a design model for a stored-program digital computer that uses a processing unit and a single separate storage structure to hold both instructions and data.
+
+2. Harvard Architecture: It’s a computer architecture with separate storage and signal pathways for instructions and data. It contrasts with the Von Neumann architecture, where program instructions and data share the same memory and pathways.
+
+3. Instruction Set Architecture (ISA): This is the part of the computer architecture related to programming, including the native data types, instructions, registers, addressing modes, memory architecture, interrupt and exception handling, and external I/O.
+
+4. Microarchitecture: Also known as computer organization, this is a lower level description of a computer’s implementation. It describes how a particular processor will implement the ISA.
+
+5. System Design: This includes all hardware components in the system, including data processors aside from the CPU, such as the graphics processing unit and direct memory access.
+
+6. x86: This is a family of instruction set architectures initially developed by Intel but now maintained by many companies. It’s used in most personal computers today.
+
+7. SPARC: Scalable Processor Architecture (SPARC) is a RISC instruction set architecture developed by Sun Microsystems.
+
+8. PowerPC: This is a RISC instruction set architecture created by the 1991 Apple–IBM–Motorola alliance, known as AIM.
+
+9. ARM: Advanced RISC Machine (ARM) is a type of processor architecture that is widely used in many mobile devices and embedded systems.
+
+10. AVR: Developed by Atmel and popularized by the Arduino Uno, AVR is a family of microcontrollers.
+
+=====================================================================
+
+The x86-64 (also known as x64, x86_64, AMD64, and Intel 64) is a 64-bit processor architecture that was introduced by AMD. It is an extension of the 32-bit x86 architecture used in PCs today, with additional features such as a larger number of general-purpose and floating-point registers and new instructions for manipulating and managing them.
+
+The x86-64 architecture is backward compatible with x86, which means it can run software written for the 32-bit x86 architecture. This is achieved through two operating modes:
+
+64-bit mode: Allows the execution of native 64-bit instructions, and access to 64-bit memory address space.
+Compatibility mode: Allows the execution of existing 32-bit software.
+So, in essence, a machine with an x86-64 processor can support both x86 (32-bit) and x64 (64-bit) instruction sets
+
