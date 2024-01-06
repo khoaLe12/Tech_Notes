@@ -1,0 +1,47 @@
+
+*** Configuration is a file that contain all informations for authenticating and authorizing the user, used by gcloud cli when send request to google cloud.
+*** Each configuartion represent an active user
+
+============================================================================================================================================
+
+1. gcloud config list: to get informations of the configuration of active account/configuration.
+
+2. gcloud init: to switch to and re-initialize existing configurations, or to create new configuration
+
+3. gcloud auth list: to list all authorized account, the active account is marked with syntax "*"
+
+4. gcloud config set account <account_name>: to set the active account to the account with the name identified by <account_name> (with google account, this could be gmail address)
+
+5. gcloud auth revoke <account_name>: to revoke the credentials of the account with the name identified by <account_name>
+
+6. gcloud info: to get the informations of active account include 'path for configuation file', 'configuarion name', 'User Config Directory' .... 
+* The 'User Config Directory' show the directory that hold the encrypted credentials and access token
+
+7. gcloud config configurations active <configuration_name>: to set the active configuration to configuration with identified name
+
+8. gcloud config configurations describe <configuration_name>: to get the informations of specified configuartion
+
+9. gcloud config set project <project_name>: to set the project 
+
+10. gcloud config set compute/zone: to set region and zone
+
+11. gcloud components list: to list all gcloud components
+
+12. gcloud beta interactive: to open interactive shell environments (this is a shell that produces suggestions and autocompletion for any command that have main page)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

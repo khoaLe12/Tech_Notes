@@ -1,0 +1,9 @@
+Encode, decode is used to prevent the malicious code injection
+
+================================================================
+
+Before making a request or response to a destination, it will follow these steps:
+
++ Encoding the content (payload) using UTF-8 by default
++ Making a URL encoding for the request/response
++ Sending request/response with its data in Stream object (data in binary format)

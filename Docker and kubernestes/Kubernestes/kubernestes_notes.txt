@@ -1,0 +1,72 @@
+		*** K8S in docker-desktop (development environment) ***
+* The K8S run as the instance of docker desktop, we will have a cluster with onky one node called docker-desktop
+
+======================================================================
+		*** K8S Object ***
+
+A Kubernetes object is a YAML file that defines how to set up and run an object with a specific kind or type in Kubernetes. For example, a Deployment object is a YAML file that defines how to create and manage one or more Pods that run the same application. A Service object is a YAML file that defines how to expose one or more Pods to other Pods or external clients. A ConfigMap object is a YAML file that defines key-value pairs of configuration data for your application. And so on.
+
+Kubernetes objects are very useful for declaratively specifying the desired state of your cluster and letting Kubernetes handle the rest. You can use kubectl commands to create, update, delete, and inspect Kubernetes objects in your cluster. You can also use kubectl apply to automatically create new objects based on the YAML files you provide.
+
+============================================================================================================================
+
+If a pod is created when creating a container, to remove that pod from cluster, we should delete that container with a defined resource (Deployment, StatefulSet, Job or DaemonSet).
+
+
+=============================================================================================================
+		*** Commands ***
+
+* kubectl port-forward <pod_name> :<port>
++ <pod_name>: the pod that we want to forward to.
++ <port>: the port of that pod (also know as virtual host) we wan to use 
++ This will create a kubectl proxy running locally, it will mount the specified port of the pod through the kubectl proxy on the <given_port> of host machine (machine that run the kubectl proxy). The <given_port> will be provided after enter the command.
+=> So we can use the given port to access the running service/application of the identified pod.
+
+
+* kubectl get pvc (persistent volume claim)
+
+
+* kubectl get storageclass (get host class)
+
+
+* kubectl create secret generic mssql --from-literal=SA_PASSWORD="pa55wOrd!" (create a secret in k8s)
++ Define name of secret: mssql
++ Define a key-value pair of the secret : SA_PASSWORD="pa55wOrd!"
+
+
+* kubectl apply -f <file_name>: Apply the configurations for the K8S object (if there is no changes found, object will not be updated)
+
+
+* kubectl rollout restart deployment <deployment_name>: Restart the deployment if the image is updated (this will update the source code of container)
+
+
+==============================================================================================================
+
+			*** K8S Ingress Nginx Controller (API Gateway) ***
+
+Ingress-nginx is an Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer.
+
+* Run Nginx server as ingress controller in K8S
++
++ COMMAND: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
++
++ Use this command to deploy ingress-nginx controller in a namespace named "ingress-nginx"
++ It will run a LoadBalancer service in namespace "ingress-nginx"
+
+* Set up rules to use ingress nginx controller as API Gateway
++ Create a new service "Ingress" using deployed ingress-nginx controller
++
++ Set up host for the rules:
+-- Open hosts file at path "C:\Windows\System32\drivers\etc\hosts"
+-- Add entry for the host in format "IP_Address host_name" (Ex: 127.0.0.1 acme.com)
++ Set up routings for the rules (route each path to a specific backend)
+
+
+
+
+
+
+
+
+
+
