@@ -1,0 +1,10 @@
+Cloud Shell is a terminal running on an "e2 small google compute engine" instance which run a debian-based linux OS. This is an ephemeral pre-configured vm and the environment you work with is a docker container running on the vm.
+
+When cloud shell instance is provision, it's provisioned with 5 GB of free persistent disk storage, and it's mounted as your home directory on the vm instance. 
+
+
+*** Support Tools, programming languages (Some are available pre-installed, some need to tell it to install) ***
+
+We can custome the environment automatically on the boot time and it will allow you to have your preferred tools when cloud shell boots up. Cloud shell also has support for a lot of major different programming languages.
+(The tools here are: a tool that automatically copy to clipboard whenever we highlight something , cloud sdk, bash, vim, helm, git, docker, ...)
+(The programming languages here are: Java, go, python, nodels, ruby, .net core, ...)

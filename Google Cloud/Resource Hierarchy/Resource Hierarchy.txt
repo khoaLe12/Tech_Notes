@@ -1,0 +1,27 @@
+What is a resource?
+
+Service-level resources
+- Compute Instance VM's
+- Cloud Storage buckets
+- Cloud SQL databases
+
+Account-level resources
+- Organization
+- Folders
+- Projects
+ 
+
+Information: Resource Hierarchy is a Google's way to configure and grant access to the various cloud resources for your company within google cloud both at the service and account level.
+
+		*** Why resource hierarchy ***
+1. Resources are organized hierachically using a parent/child relationship
+2. Designed to map organizational structure to Google Cloud
+3. Better management of permissions and access control
+
+
+		*** Policy (The policy means the accessibility of the resources) ***
+1. Policies are controlled by IAM - Identity And Access Management
+
+2. The Inheritance of policy
+When the IAM policy is set on a parent, the children will inherit this policy respectively
+Access control policies and configuration settings on a parent resource are inherited by the child

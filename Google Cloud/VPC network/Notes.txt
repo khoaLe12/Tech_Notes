@@ -1,0 +1,149 @@
+		****** VPC Network ******
+1. When we create a project, it will create a default vpc network with subnets in each region automatically (auto mode of creating default vpc network)
+2. Custom mode of creating vpc network starts with no subnets (fill control over subnet creation)
+
+
+
+		****** Subnets ******
+1. Is a subnetwork of a VPC
+2. Each VPC network consists of one or more subnets and each subnet is associated with a region.
+3. We can create more than one subnet per region.
+4. We can not change the name OR region of a subnet after we have created it.
+5. Primary and Secondary ranges for subnets cannot overlap with any allocated range.
+
+
+
+		****** Increasing subnet IP space ******
+1. Must not overlap with other subnets in the same VPC network.
+2. Inside the RFC 1918 address-space.
+3. Network range must be larger than the original (prefix length must be smaller than the old one).
+4. Once subnet has been expanded, you cannot undo it.
+
+ex: we can expand the space of ip address: /20 -> /16
+    We can NOT reduce the space of ip address: /16 -> /20
+    (One-way conversion)
+
+
+
+		****** Reserved IP Addresses ****** 
+1. Network - First address
+2. Default Gateway - Second address
+3. Second-to-last address - Google Cloud future use
+4. Broadcast - Last address
+
+
+
+		****** Routing and Private Google Access ****** 
+1. Routes define the network traffic path from one destination to the other.
+2. In a VPC routes consists of a single destination (CIDR) and a single next hop.
+3. All routes are stored in the routing table for the VPC.
+4. Each package leaving a VM is delivered to the next hop of an application route based on a routing order.
+
+
+
+		****** Routing Types ******
+I. System-generated
+1. Default Route:
+ _ When we create a VPC network, gg cloud created a system-generated default route
+ _ Path to the Internet
+ _ Path for Private Google Access
+ _ Can be deleted only by replacing with custom route
+ _ Lowest priority
+
+2. Subnet Route:
+ _ Routes that defines paths to each subnet in the VPC network.
+ _ Each subnet has at least one subnet route whose destination matches the primary IP range of the subnet.
+ _ When a subnet is created, a corresponding subnet route is created for both primary and secondary IP range.
+ _ Cannot delete a subnet route unless you modify or delete the subnet.
+
+II. Custom Routes
+1. Static Route:
+ _ Can use the next hop feature.
+ _ Can be created manually.
+ _ Static routes for the remote traffic selectors are created automatically when creating Cloud VPN tunnels
+
+2. Dynamic Route
+ _ Managed by one or more Cloud Routers
+ _ Dynamically exchange routes between a VPC and on-premises networks
+ _ Destination IP ranges outside the VPC network
+ _ Used with dynamically routed VPNs and Interconnect
+
+
+
+		****** Private Google Access ****** 
+1. VM instances that ony have internal ip addresses can use private google access and this allow them to reach the external ip addresses of google api and services.
+2. VM instances that have external ip address can access to the internet.
+3. A VM can have both internal and external ip address.
+4. VM instances within a VCP Network can access (communicate) to each other.
+5. We can use private google access to connect to gg api and services from our own on-premises network through a cloud vpn tunnel or cloud interconnect.
+6. We can also use private gg access through a vpc network peering connection (private services access).
+
+
+
+		****** IP Addessing ******
+ * INTERNAL (Private):
+1. Not publicy advertised and used only within a network.
+2. Resources with internal IP addresses communicate with each other privately.
+3. Each VM have a unique internal ip address in a vpc network.
+
+ === How Internal IP Address is  ===
+Each subnet have their IP range
+4. Auto:
+	- In Auto mode VPC: automatically selected if available.
+5. Custom:
+	- In Custom VPC: must be selected manually.
+
+ === Internal IP addressing ===
+6. Alias IP:
++ Configure multiple internal IP Addresses, representing containers or applications hosted in a VM, without using a seperate network interface.
++ IP ranges can be assigned from the subnet's primary or secondary ranges.
+
+7. Ephemeral IP:
++ The IP address comes from the region's subnet
++ IP Addresses are released only when the instance or forwarding rule is deleted.
+
+8. Static IP:
++ We can promote Ephemeral IP to Static IP
++ You must specify which subnet the IP address comes from
++ Assigns the IP address to your project until  you explicitly release it.
+
+
+* External:
+
+=== External IP addressing ===
+1. External IP addresses are needed to communicate with the internet, with resources in another network, or a public Google Cloud service.
+2. Sources from outside a Google Cloud VPC network can address a specific resource by the external IP address.
+3. Only resources with an external IP address can send and receive traffic directly to and from outside the network.
+
+4. Ephemeral IP:
++ Automatically assigned
++ IP addresses are released when stopping and restarting or deleting.
+
+5. Static IP:
++ We can promote Ephemeral to Static.
++ Assign the IP address to your project until you explicitly release it.
++ Available as a regional or global resource.
+
+
+		****** Internal IP address reservation ******
+1. Reserve a specific address and then associate it with a specific resource.
+2. Specify an ephemeral internal ip address for a resource and then promote the address
+
+
+
+		****** VPC Firewall rules ******
+
+=== Implied and pre-populated rules ===
+1. Google Cloud have some rules that can affect incoming or outgoing connections.
+2. For instance, Google Cloud does not allow certain ip protocol such as egress traffic on tcp port 25 within a VPC network.
+3. Google Cloud does not allow ingress traffic of TCP, UDP, ICMP, GRE to external ip addresses of gg cloud resources.
+4. Google Cloud always allow communication between a VM instance and its corresponding Metadata Server on 169.254.169.254.
+5. Metadat server provides some basic services to the instance like: DHCP, DNS, Instance Metadata, NTP (network time protocol).
+6. Every network has 2 implied firewall rules that permit outgoing connections and block incoming connections.
+7. Implied Rules:
+	- Allow egress: the action is 'allow' and the destination is 'all ips' (priority is the lowest possible) except for traffic blocked by Google Cloud.
+	- Deny ingress: the action is 'deny' and the source is 'all ips' (priority is the lowest possible) and protects all VM instances by blocking incoming connections.
+
+
+
+

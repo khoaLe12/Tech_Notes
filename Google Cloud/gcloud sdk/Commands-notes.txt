@@ -21,13 +21,13 @@
 
 8. gcloud config configurations describe <configuration_name>: to get the informations of specified configuartion
 
-9. gcloud config set project <project_name>: to set the project 
+9. gcloud config set project <project_name/project_id>: to set the project 
 
 10. gcloud config set compute/zone: to set region and zone
 
 11. gcloud components list: to list all gcloud components
 
-12. gcloud beta interactive: to open interactive shell environments (this is a shell that produces suggestions and autocompletion for any command that have main page)
+12. gcloud beta interactive: to open interactive shell environments (this is a shell that produces suggestions and autocompletion for any command that have main page) - need to install 'beta' component of gcloud first.
 
 
 

@@ -1,0 +1,24 @@
+Cloud Shell instance is a vm that run debian-based linux OS. So when we work with Cloud Shell, we work with debian.
+
+==============================================================================
+
+1. df -h/ df: to check disk storage
+
+2. curl metadata/computeMetadata/v1/instance/zone: to get the zone where the instance is located
+
+3. ls: to get viewed items in the current directory
+
+4. ls -al: to get all (include hidden)
+
+5. touch <file_name>: to create new file
+
+6. gcloud compute networks subnets expand-ip-range <network_name> --region=<region_name> --prefix-length=16: to change the prefix of ip range of a subnet of region in a network to 16
+ex: gcloud compute networks subnets expand-ip-range default --region=us-west1 --prefix-length=16
+
+7. gcloud compute networks subnets describe <subnet_name> --region=<region_name>: to get description of a subnet in a region
+
+8. gcloud compute addresses list: to view all internal and external ip addresses that are available.
+
+9. gcloud compute addresses create <ip_address_name> --addresses <external_ip_address> --region <region_name>: to promote a phemeral external ip address of a region to static external ip address.
+
+10. gcloud compute addresses delete <ip_address_name> --region <region_name>: to delete (release) a reserved ip address in a region (specify the name of ip address that we want to delete).
