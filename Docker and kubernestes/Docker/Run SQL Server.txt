@@ -1,0 +1,26 @@
+=================================== CRAETE VOLUME TO PERSIST DATA ===========================================
+
+docker volume create vmssql
+
+docker volume list
+
+
+
+
+==================================== CREATE DATABASE CONTAINER ================================================
+
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_PID=Express" -p 1444:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+
+
+
+
+== Put Container inside a network, name it.
+== Mount a volume into container (virtual file system of container) to persist data.
+1. docker run --network my_network --name exe201_db -v vmssql:/var/opt/mssql -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+
+2.docker run --network my_network --name exe201_db -v vmssql:/var/opt/mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+
+3. Run Service: docker run --network my_network -p 80:80 -d khoale111/exe201-project:latest
+
+
+docker run --hostname=d6780ede965f --user=mssql --env='MSSQL_PID=Express' --env='ACCEPT_EULA=Y' --env='SA_PASSWORD=yourStrong(!)Password' --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=MSSQL_RPC_PORT=135 --env=CONFIG_EDGE_BUILD= --env=MSSQL_PID=developer --network=my_network -p 1443:1433 --restart=no --label='com.microsoft.product=Microsoft SQL Server' --label='com.microsoft.version=16.0.4105.2' --label='org.opencontainers.image.ref.name=ubuntu' --label='org.opencontainers.image.version=22.04' --label='vendor=Microsoft' --runtime=runc -d mcr.microsoft.com/mssql/server:2022-latest

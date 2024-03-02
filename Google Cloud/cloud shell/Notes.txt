@@ -8,3 +8,9 @@ When cloud shell instance is provision, it's provisioned with 5 GB of free persi
 We can custome the environment automatically on the boot time and it will allow you to have your preferred tools when cloud shell boots up. Cloud shell also has support for a lot of major different programming languages.
 (The tools here are: a tool that automatically copy to clipboard whenever we highlight something , cloud sdk, bash, vim, helm, git, docker, ...)
 (The programming languages here are: Java, go, python, nodels, ruby, .net core, ...)
+
+
+
+
+
+	****** Log in to the instance on Google Cloud ******

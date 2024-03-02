@@ -22,3 +22,50 @@ ex: gcloud compute networks subnets expand-ip-range default --region=us-west1 --
 9. gcloud compute addresses create <ip_address_name> --addresses <external_ip_address> --region <region_name>: to promote a phemeral external ip address of a region to static external ip address.
 
 10. gcloud compute addresses delete <ip_address_name> --region <region_name>: to delete (release) a reserved ip address in a region (specify the name of ip address that we want to delete).
+
+11. If a VM instance have a permission for read/write api to cloud storage(bucket), we can use this command to get all files of the bucket
+- gsutil ls gs://<bucket_name>: get all files of a bucket identified by its name.
+
+12. ping <ip_address>: to ping a server (that server must support icmp protocol).
+
+13. gcloud compute ssh --project <project_name/project_id> --zone <zone_name> <instance_name> --internal-ip: use gcloud shell to ssh to VM instance of a project on a zone using internal ip.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

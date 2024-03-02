@@ -29,16 +29,31 @@
 
 12. gcloud beta interactive: to open interactive shell environments (this is a shell that produces suggestions and autocompletion for any command that have main page) - need to install 'beta' component of gcloud first.
 
+=================================================================================
+		How to ssh to the vm instance running linux-like OS
 
+NOTES: need to go to home directory. 
+	Each time connect to a new instance, neet to generate new ssh key.
 
+Step1: generate public-private key and store public key to user account.
+13. gcloud compute os-login ssh-keys add --key-file <path_to_public_key>: to store key with currently active user account.
+ex: path_to_public_key: .ssh/id_rsa.pub (this is where to store public key generate by 'ssh-keygen' command)
 
+Step2: SSH using private key
+14. ssh -i <path_to_private key> <user_name>@<external_ip>: to ssh to vm instance.
+ex: ssh -i .ssh/id_rsa khoaldse161404_fpt_edu_vn@34.80.10.149
 
+==================================================================================
 
+15. curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/: use curl cli tool to query any metadata on any instance using some supported protocols like http, ftp, scp, ...
+We must provide a header (-H "Metadata-Flavor: Google") in all requests
 
+16. gcloud compute instances add-metadata <instance_name> --metadata <key>=<value> --zone <zone_name_of_instance>: to add custom metadata for an instance.
+ex: gcloud compute instances add-metadata khoale-webserver --metadata env=dev --zone asia-east1-b
 
+17. gcloud compute instances remove-metadata <instance_name> --keys <key_name> --zone <zone_name>: to remove a metadat with a key
 
-
-
+18. curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/attributes/: to get all metadata(key-value) of an instance.
 
 
 

@@ -36,7 +36,7 @@ ex: we can expand the space of ip address: /20 -> /16
 		****** Routing and Private Google Access ****** 
 1. Routes define the network traffic path from one destination to the other.
 2. In a VPC routes consists of a single destination (CIDR) and a single next hop.
-3. All routes are stored in the routing table for the VPC.
+3. All routes are stored in the routing table for the VPC routing.
 4. Each package leaving a VM is delivered to the next hop of an application route based on a routing order.
 
 
@@ -143,6 +143,43 @@ Each subnet have their IP range
 7. Implied Rules:
 	- Allow egress: the action is 'allow' and the destination is 'all ips' (priority is the lowest possible) except for traffic blocked by Google Cloud.
 	- Deny ingress: the action is 'deny' and the source is 'all ips' (priority is the lowest possible) and protects all VM instances by blocking incoming connections.
+
+=== Firewall rule characteristics ===
+1. Firewall rules applied to incoming or outgoing connection (not both).
+2. Firewall rules only support ipv4 address or ipv4 block for connections.
+3. Firewall rules action is either allow or deny (not both at the same time).
+4. When creating Firewall rules, we need to select a VPC network.
+5. Firewall rules is stateful, that means the firewall keeps track of the state of network connections and use this informations to manage network traffic.
+
+
+
+		****** VPC Peering ******
+1. Private connectivity accross two VPC networks (RFC 1918).
+2. Peer across the same or different projects and organizations.
+3. Reduces network latency.
+4. Increases network security.
+5. Reduces network costs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

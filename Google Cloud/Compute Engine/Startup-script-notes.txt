@@ -1,0 +1,9 @@
+1. Use startup-script: Add a metadata with 'key' is startup-script and 'value' is commands to be executed
+
+2. Use startup-script-url: Add a metadata with 'key' is startup-script-url and 'value' is the url to the executeable file (file .sh)
+
+================= In a VM instance's cli, USE ==================
+3. sudo journalctl -u google-startup-scripts.service -f: to check script run result.
+
+4. sudo google_metadata_script_runner -d --script-type startup: to debug script.
+   or: sudo google_metadata_script_runner startup
