@@ -156,6 +156,15 @@ chown root:root index.html: change the owner to root and group to root.
 ++ free display the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel.
 = free -h: make it more easiser to read (h is for human)
 
+
++++ lsof: display the processes information
+= sudo lsof -i :80 to get all processes that are using port 80
+
+
++++ ln: to create a symbolic link file
+++ ln -s <path_to_linked_file> <path_to_location>
+= ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
 ====================================================================================
 
 file sh is a file shell script like 'run.sh' which can be run when click or call to it. To run .sh file, type command start with path then file name like './run.sh'

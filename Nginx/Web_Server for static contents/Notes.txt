@@ -5,7 +5,9 @@ At here, there are 2 important folders are:
 sites-enable and sites-available
 
 * the sites-enable used to contains files which each file define the source code that the nginx will use to create website
-* sites-available used to contains "symbolic link (or symlink)" files, which each file is marked as "l" at the beginning of the file permission string (lrwxrwxrwx), each file serves as a reference to another file or directory (in this case, each file will link to a specific file at 'sites-enable' folder).
+
+* sites-available used to contains "symbolic link (or symlink)" files, which each file is marked as "l" at the beginning of the file permission string (lrwxrwxrwx), each file serves as a reference to another file or directory (in this case, each file will link to a specific file at 'sites-enable' folder)
+
 * 'source code' usually stored at folder /var/www/<domain_name>/html/
 
 

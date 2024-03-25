@@ -1,0 +1,16 @@
+Each VM have at least one Boot Persistent Disk volume that contains the operating system.
+
+When your apps require additional storage space, one possible solution is to attach additional Persistent Disk volumes to your VM.
+
+A VM can have many attached disks to it.
+
+1.To check how many attached disks to a Linux VM: 
+ - ls -l /dev/disk/by-id/google-*
+
+2. Format the disk device using mkfs tool:
+ -  sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/DEVICE_NAME
+ 
+3. Mount the disk:
+ - Step 1 (create a directory taht serves as the mounted point for a disk on the VM): sudo mkdir -p /mnt/disks/MOUNT_DIR
+ - Step 2 (Use the mount tool to mount the disk to the instance, and enable the discard option): sudo mount -o discard,defaults /dev/DEVICE_NAME /mnt/disks/MOUNT_DIR
+ - Step 3 (Configured read and write permission on the disk): sudo chmod a+w /mnt/disks/MOUNT_DIR

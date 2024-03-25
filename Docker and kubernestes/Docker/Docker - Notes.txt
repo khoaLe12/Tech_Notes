@@ -1,3 +1,19 @@
+When Docker pulls an image, it stores the image in its default storage directory, which us typically /var/lib/dokcer (though this can be changed in Docker's configuration).
+
+To change the Docker's default storage location to other directory, we can modify the Docker daemon configuration file, which is /etc/docker/daemon.json.
+
+In Linux, use VIM to write and save changes on daemon.json file: 
+Add or modify data-root option to point to the specified directory:
+ {
+  "data-root": "/mnt/mydisk/docker"
+}
+
+
+
+
+
+================================================================================================================================================================================================================================================================================================================================================
+
 The RUN instruction in a Dockerfile has two forms:
 
 RUN <command> (shell form)

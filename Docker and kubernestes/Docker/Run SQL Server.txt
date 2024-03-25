@@ -22,5 +22,7 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_P
 
 3. Run Service: docker run --network my_network -p 80:80 -d khoale111/exe201-project:latest
 
+4. Run Model AI: docker run --network my_network --name modelAi -p 8080:9999 -d tdragon0735/drmap004:latest
+
 
 docker run --hostname=d6780ede965f --user=mssql --env='MSSQL_PID=Express' --env='ACCEPT_EULA=Y' --env='SA_PASSWORD=yourStrong(!)Password' --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=MSSQL_RPC_PORT=135 --env=CONFIG_EDGE_BUILD= --env=MSSQL_PID=developer --network=my_network -p 1443:1433 --restart=no --label='com.microsoft.product=Microsoft SQL Server' --label='com.microsoft.version=16.0.4105.2' --label='org.opencontainers.image.ref.name=ubuntu' --label='org.opencontainers.image.version=22.04' --label='vendor=Microsoft' --runtime=runc -d mcr.microsoft.com/mssql/server:2022-latest
