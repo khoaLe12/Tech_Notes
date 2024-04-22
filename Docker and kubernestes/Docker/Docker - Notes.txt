@@ -1,4 +1,4 @@
-When Docker pulls an image, it stores the image in its default storage directory, which us typically /var/lib/dokcer (though this can be changed in Docker's configuration).
+When Docker pulls an image, it stores the image in its default storage directory, which us typically /var/lib/doerck (though this can be changed in Docker's configuration).
 
 To change the Docker's default storage location to other directory, we can modify the Docker daemon configuration file, which is /etc/docker/daemon.json.
 
@@ -9,6 +9,12 @@ Add or modify data-root option to point to the specified directory:
 }
 
 
+==================================================================================================================================================================================================================================================================================================================
+
+		Docker Inspect:
+docker inspect --type container|image|node|network|secret|service|volume|task|plugin <container_id/container_name/.....>: to inspect a resource, this can be very useful to get many important informations.
+
+
 
 
 
@@ -16,8 +22,10 @@ Add or modify data-root option to point to the specified directory:
 
 The RUN instruction in a Dockerfile has two forms:
 
-RUN <command> (shell form)
-RUN ["executable", "param1", "param2"] (exec form)
+RUN <command> (SHELL FORM)
+RUN ["executable", "param1", "param2"] (EXEC FORM)
+
+
 In your case, RUN ["/log-event.sh", "image created"] is using the exec form, and RUN /log-event.sh image created is using the shell form.
 
 Here are the differences between the two forms:
@@ -73,3 +81,19 @@ There are many ways to execute the scripts (or commands) defined in the instruct
 	+ Run the container (case 1): docker run <my_image> => the command "log-event.sh" run
 	+ Run the container (case 2): docker run <my_image> container running now => the command "log-event.sh container running now" run
 
+
+====================================================================================================================================================================================================================
+
+				Run a container of .net project with a desired container port
+
+1. The default ASP.NET Core port configured in .NET container images for .net 7 and earlier is 80
+
+2. The default ASP.NET Core port configured in .NET container images for .net 8 and later is 8080
+
+=> To run a container with desired container port not only limit in 80 and 8080, we can set a vaiable environment to tell the application use the port we want. By explicitly set the ASPNETCORE_HTTP_PORTS, ASPNETCORE_HTTPS_PORTS, and ASPNETCORE_URLS environment variables to the desired port.
+EX: 
+	docker run -p 9090:9090 -e ASPNETCORE_URLS=http://+:9090 -d khoale111/exe201-project	
+	docker run -p 9091:9091 -e 'ASPNETCORE_URLS=http://*:9091' -d khoale111/exe201-project
+	docker run -p 9092:9092 -e "ASPNETCORE_HTTP_PORTS=9092" -d khoale111/exe201-project
+
+REFERENCES: https://learn.microsoft.com/en-us/dotnet/core/compatibility/containers/8.0/aspnet-port

@@ -1,0 +1,113 @@
+{
+  "routingPreference": "TRAFFIC_AWARE",
+  "avoidHighways": true,
+  "avoidTolls": true,
+  "avoidFerries": true,
+  "TravelMode": "DRIVE",
+  "Status": 0,
+  "StartDate": "2024-01-27T15:13:21.035Z",
+  "UserId": "5470783f-4ac2-4ccf-6f3b-08dc1fd2433d",
+  "Locations": [
+    {
+      "Address": "510 Kinh Duong Vuong",
+      "Longitude": 106.6114375,
+      "Latitude": 10.7373218,
+      "Items": [
+        {
+          "Name": "Item1",
+          "Quantity": 2,
+          "Description": "Item1",
+          "PickUp": true
+        }
+      ]
+    },
+    {
+      "Address": "Nhà Văn Hóa Sinh Viên",
+      "Longitude": 106.7981485,
+      "Latitude": 10.8751238,
+      "Items": [
+        {
+          "Name": "Item2",
+          "Quantity": 3,
+          "Description": "Item2",
+          "PickUp": false
+        }
+      ]
+    },
+    {
+      "Address": "FPT University",
+      "Longitude": 106.8073081,
+      "Latitude": 10.8411276,
+      "Items": [
+        {
+          "Name": "Item3",
+          "Quantity": 2,
+          "Description": "Item3",
+          "PickUp": true
+        }
+      ]
+    },
+    {
+      "Address": "Vinhomes Grand Park Thành phố Thủ Đức",
+      "Longitude": 106.8364135,
+      "Latitude": 10.8370098,
+      "Items": [
+        {
+          "Name": "Item4",
+          "Quantity": 2,
+          "Description": "Item4",
+          "PickUp": true
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+[{"place_id":"FPT University - HCMC Campus","description":"FPT University - HCMC Campus, Lô E2a-7, Đường D1, Long Thanh My Ward, Thu Duc City, 00848, Vietnam","location":{"latlng":{"latitude":10.841416800000001,"longitude":106.81007447258705}}},{"place_id":"Emart Supermarket","description":"Emart Supermarket, Đường Phan Văn Trị, Go Vap District, Ho Chi Minh City, 71409, Vietnam","location":{"latlng":{"latitude":10.82356195,"longitude":106.69358210424005}}},{"place_id":"Chung Cư Boulevard Hưng Thịnh","description":"Chung Cư Boulevard Hưng Thịnh, Nguyễn Lương Bằng nối dài, District 7, Ho Chi Minh City, 72915, Vietnam","location":{"latlng":{"latitude":10.708245649999999,"longitude":106.73333979117565}}}]
+
+
+[
+  {
+    "place_id": "Kinh Duong Vuong",
+    "description": "510 Kinh Duong Vuong",
+    "location": {
+      "latlng": {
+        "latitude": 10.7373218,
+        "longitude": 106.6114375
+      }
+    }
+  },
+  {
+    "place_id": "Nhà Văn Hóa Sinh Viên",
+    "description": "Nhà Văn Hóa Sinh Viên",
+    "location": {
+      "latlng": {
+        "latitude": 10.8751238,
+        "longitude": 106.7981485
+      }
+    }
+  },
+  {
+    "place_id": "FPT University",
+    "description": "FPT University",
+    "location": {
+      "latlng": {
+        "latitude": 10.8411276,
+        "longitude": 106.8073081
+      }
+    }
+  },
+  {
+    "place_id": "Vinhomes Grand Park Thành phố Thủ Đức",
+    "description": "Vinhomes Grand Park Thành phố Thủ Đức",
+    "location": {
+      "latlng": {
+        "latitude": 10.8370098,
+        "longitude": 106.8364135
+      }
+    }
+  }
+]

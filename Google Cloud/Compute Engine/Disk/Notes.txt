@@ -11,6 +11,9 @@ A VM can have many attached disks to it.
  -  sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/DEVICE_NAME
  
 3. Mount the disk:
- - Step 1 (create a directory taht serves as the mounted point for a disk on the VM): sudo mkdir -p /mnt/disks/MOUNT_DIR
+ - Step 1 (create a directory that serves as the mounted point for a disk on the VM): sudo mkdir -p /mnt/disks/MOUNT_DIR
  - Step 2 (Use the mount tool to mount the disk to the instance, and enable the discard option): sudo mount -o discard,defaults /dev/DEVICE_NAME /mnt/disks/MOUNT_DIR
  - Step 3 (Configured read and write permission on the disk): sudo chmod a+w /mnt/disks/MOUNT_DIR
+
+
+Ex for step 3: sudo mount -o discard,defaults /dev/sdb /mnt/disks/docker images
