@@ -1,0 +1,12 @@
+imports:
+- path: container_manifest.yaml
+  name: container_manifest
+- path: container_vm.jinja
+
+resources:
+  - name: my-container-vm
+    type: container_vm.jinja
+    properties:
+      zone: us-east1-b
+      containerImage: family/cos-stable
+      containerManifest: container_manifest

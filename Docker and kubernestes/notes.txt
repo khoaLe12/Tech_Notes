@@ -1,0 +1,7 @@
+
+
+
+
+REFERENCES:
+
+https://container.training/kube-selfpaced.yml.html#716

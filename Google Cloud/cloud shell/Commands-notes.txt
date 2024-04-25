@@ -30,12 +30,29 @@ ex: gcloud compute networks subnets expand-ip-range default --region=us-west1 --
 
 13. gcloud compute ssh --project <project_name/project_id> --zone <zone_name> <instance_name> --internal-ip: use gcloud shell to ssh to VM instance of a project on a zone using internal ip.
 
+14. export PROJECT_ID=$(gcloud config get-value project): to create a environment variable named "PROJECT_ID" with the value is the id of the working project.
+- others ex: export PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+
+15. gcloud projects add-iam-policy-binding $PROJECT_ID \
+> --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
+> --role=roles/run.admin
+=> Add 2 IAM policy for a specified project (add service account as member and define its role)
+
+16. gcloud iam service-accounts add-iam-policy-binding \
+> $PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+> --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
+> --role=roles/iam.serviceAccountUser
+=> Setup admin roles for the service account 
+=> update IAM policy for serviceAccount [$PROJECT_NUMBER-compute@developer.gserviceaccount.com].
+   Make a binding for members include serviceAccount [$PROJECT_NUMBER@cloudbuild.gserviceaccount.com] to the role 'roles/iam.serviceAccountUser') 
 
 
 
 
 
-
+REFERENCES:
+for 14,15,16: https://www.youtube.com/watch?v=orZEBSXbmFU&t=327s
+	https://github.com/GoogleCloudPlatform/software-delivery-workshop/tree/main/labs/cloudrun-progression
 
 
 

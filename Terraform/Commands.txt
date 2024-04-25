@@ -1,0 +1,11 @@
+1. terraform init: download the providers defined in the configuration, then install it in a hidden subdirectory of current working directory, named .terraform.
+
+2. terraform fmt: format your configuration, it will print out the names of the files it modified, if any.
+
+3. terraform validate: validate configuration, it will return a message to indicate whether it success or not.
+
+4. terraform apply: it will list actions that terraform will take. If the confirmation is accepted, Terraform will create infrastructure.
+
+5. terraform show: Inspect the current state
+
+6. terraform destroy: terminates resources managed by your Terraform project.
