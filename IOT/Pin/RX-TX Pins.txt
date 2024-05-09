@@ -1,0 +1,7 @@
+RX stands for “Receive” and TX stands for “Transmit”. These pins are used for serial communication. The TX pin sends out (transmits) the digital signal, and the RX pin listens (receives) for a digital signal. They are associated with the internal UART (universal asynchronous receiver transmitter), also known as the serial port. On the Arduino Uno, these are Digital Pins 0 (RX) and 1 (TX). It’s important to note that if you’re using these pins for serial communication, they cannot be used for regular digital input/output.
+-> Serial communication is a method of transferring data between devices one bit at a time, sequentially.
+
+
+=> For serial communication
+- RX listens for a digital signal.
+- TX sends out the digital signal.

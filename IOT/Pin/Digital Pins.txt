@@ -1,0 +1,4 @@
+These are used for digital input/output operations. They can read or write a digital signal, which means they can detect or output either a HIGH (usually 5V) or LOW (0V) state. Some of these pins also have additional capabilities, such as Pulse Width Modulation (PWM) for simulating analog output, and interrupt capabilities.
+
+
+=> HIGH, LOW -- TRUE, FALSE -- 1, 0 -- 5V, 0V

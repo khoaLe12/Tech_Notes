@@ -4,8 +4,10 @@
 
 3. terraform validate: validate configuration, it will return a message to indicate whether it success or not.
 
-4. terraform apply: it will list actions that terraform will take. If the confirmation is accepted, Terraform will create infrastructure.
+4. terraform plan:
 
-5. terraform show: Inspect the current state
+5. terraform apply: it will list actions that terraform will take. If the confirmation is accepted, Terraform will create infrastructure.
 
-6. terraform destroy: terminates resources managed by your Terraform project.
+6. terraform show: Inspect the current state
+
+7. terraform destroy: terminates resources managed by your Terraform project.

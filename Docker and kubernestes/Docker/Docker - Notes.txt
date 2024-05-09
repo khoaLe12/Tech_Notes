@@ -26,25 +26,29 @@ RUN <command> (SHELL FORM)
 RUN ["executable", "param1", "param2"] (EXEC FORM)
 
 
-In your case, RUN ["/log-event.sh", "image created"] is using the exec form, and RUN /log-event.sh image created is using the shell form.
+In your case, RUN ["/log-event.sh", "image created"] is using the exec form, and "RUN /log-event.sh image created" is using the shell form.
 
 Here are the differences between the two forms:
 
-Shell form: The command is run in a shell, which by default is /bin/sh -c on Linux or cmd /S /C on Windows. This allows you to use shell processing capabilities, such as using pipes, redirects, or running multiple commands with &&. For example, RUN echo 'we are running some # of cool things' > /usr/local/etc/cool/stuff.txt.
+Shell form: The command is run in a shell, which by default is /bin/sh -c on Linux or cmd /S /C on Windows. This allows you to use shell processing capabilities, such as using pipes, redirects, or running multiple commands with &&. 
+* For example, RUN echo 'we are running some # of cool things' > /usr/local/etc/cool/stuff.txt.
+** The executeable could be windows or linux commands, or could be installed cli commands like "dotnet", "nodejs", ...
 
 Exec form: This form is recommended when you want to avoid shell processing. The exec form makes it possible to avoid shell string munging, and to RUN commands using a base image that does not contain the specified shell executable. It takes a JSON array with the first element being the executable and the rest being the arguments.
 
-In your Dockerfile, RUN ["/log-event.sh", "image created"] is using the exec form, which means it will execute the log-event.sh script with image created as an argument, without invoking a shell.
+****
+ - In your Dockerfile, RUN ["/log-event.sh", "image created"] is using the exec form, which means it will execute the log-event.sh script with image created as an argument, without invoking a shell.
 
-On the other hand, RUN /log-event.sh image created is using the shell form, which means it will run the command in a shell. This allows you to use shell features, but also means you need to be aware of shell processing of your command.
+ - On the other hand, RUN /log-event.sh image created is using the shell form, which means it will run the command in a shell (the OS of the host will run). This allows you to use shell features, but also means you need to be aware of shell processing of your command.
 
 
 ==================================================================================================================================================
 
 
-There are many ways to execute the scripts (or commands) defined in the instructions (RUN, CMD, ENTRYPOINT).
+There are many ways to execute the scripts (or commands) defined in the instructions (3 types of run instruction: RUN, CMD, ENTRYPOINT).
 
 1. Use Shebang (#!) placed at the top of the executebale script file (like .sh file) to define which interpreter will be used by OS within the container (defined by 'FROM' instruction) to interpret and exeute the commands.
+=> Shebang used to defined the program that can execute the file (.sh, .exe, ...)
 - So at the Dockerfile instructions used with 'Exec form', we can define that scripts to be a executeable binary file.
 - Ex: 
 	+ At log-event.sh: #!/bin/sh placed at the top of file

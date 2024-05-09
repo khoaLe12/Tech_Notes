@@ -1,0 +1,3 @@
+These pins are used to read analog signals. An analog signal is one that can have any value within a range, not just HIGH or LOW. On an Arduino Uno, you’ll find 6 analog pins labeled from A0 to A5. They are used to read the voltage between 0 to 5V, with a resolution between 0 (0V) and 1023 (5V).
+
+=> value range from 0 to 1023 (0V - 5V).
