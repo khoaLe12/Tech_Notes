@@ -16,11 +16,12 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_P
 
 == Put Container inside a network, name it.
 == Mount a volume into container (virtual file system of container) to persist data.
-1. docker run --network my_network --name exe201_db -v vmssql:/var/opt/mssql -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+1. docker run --network my_network --name sams_db -v vmssql:/var/opt/mssql -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 
-2. docker run --network my_network --name exe201_db -v vmssql:/var/opt/mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+2. docker run --network my_network --name sams_db -v vmssql:/var/opt/mssql -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 
 3. Run Service: docker run --network my_network -p 80:80 -d khoale111/exe201-project:latest
+	docker run --network my_network -p 80:80 -d khoale111/sams-project:latest
 
 4. Run Model AI: docker run --network my_network --name modelAi -p 8080:9999 -d tdragon0735/drmap006:latest
 

@@ -16,4 +16,4 @@ A VM can have many attached disks to it.
  - Step 3 (Configured read and write permission on the disk): sudo chmod a+w /mnt/disks/MOUNT_DIR
 
 
-Ex for step 3: sudo mount -o discard,defaults /dev/sdb /mnt/disks/docker images
+Ex for step 2: sudo mount -o discard,defaults /dev/sdb /mnt/disks/docker images
