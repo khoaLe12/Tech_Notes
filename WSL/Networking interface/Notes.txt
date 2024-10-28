@@ -1,0 +1,13 @@
+On each Linux distribution, WSL creates netwrok interface for each, to identify IP address used for a Linux distribution running via WSL, there ar 2 options:
+1. using command at host: wsl -d <DistributionName> hostname -I
+2. Using command at distribution instance: sudo ip add show
+
+To identify IP address of windows host machine, use the command "ipconfig /all" to list all information. At "Ethernet adapter vEthernet (WSL)", we can see the ip address of the host
+
+
+
+Using "Netsh interface portproxy" to forward a request from host to a specific distribution instance, use the command:
++ netsh interface portproxy add v4tov4 listenport=<yourPortToForward> listenaddress=0.0.0.0 connectport=<yourPortToConnectToInWSL> connectaddress=(wsl hostname -I)
+++++ Ex: netsh interface portproxy add v4tov4 listenport=4000 listenaddress=0.0.0.0 connectport=4000 connectaddress=192.168.101.100
+Desc of ex: forward a request with port 4000 at all ip address to an instance whose ip address is 192.168.101.100, and to the port 4000 at that instance
+

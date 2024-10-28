@@ -17,3 +17,6 @@ A VM can have many attached disks to it.
 
 
 Ex for step 2: sudo mount -o discard,defaults /dev/sdb /mnt/disks/docker images
+
+
+sudo mount -o discard,defaults /dev/sdc /var/opt/mssql

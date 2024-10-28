@@ -1,0 +1,11 @@
+1. Command to list all processes with their listen port in windows:
++ netstat -ano -p tcp
+
+2. Using Netsh interface portproxy to forward request:
++ netsh interface portproxy add v4tov4 listenport=<yourPortToForward> listenaddress=0.0.0.0 connectport=<yourPortToConnectToInWSL> connectaddress=(wsl hostname -I)
++ netsh interface portproxy show all: list all proxy rules
+++ Link: https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-interface-portproxy
+
+
+3. View Windows IP Configuration:
++ ipconfig /all

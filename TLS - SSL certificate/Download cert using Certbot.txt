@@ -1,0 +1,24 @@
+====================================================================================
+		Install certificate in nginx
+
+1. Install snap:
++ sudo apt update
++ sudo apt install snapd
+
+
+2. Install Certbot using snap:
++ sudo snap install --classic certbot
+
+
+3. Prepare Certbot command:
++ sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+
+(Optional: 2 ways)
+
+4.1. Get and install cert to nginx:
++ sudo certbot --nginx
+
+
+4.2. Only get cert:
++ sudo certbot certonly --nginx
