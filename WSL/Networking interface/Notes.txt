@@ -11,3 +11,7 @@ Using "Netsh interface portproxy" to forward a request from host to a specific d
 ++++ Ex: netsh interface portproxy add v4tov4 listenport=4000 listenaddress=0.0.0.0 connectport=4000 connectaddress=192.168.101.100
 Desc of ex: forward a request with port 4000 at all ip address to an instance whose ip address is 192.168.101.100, and to the port 4000 at that instance
 
+
+
+Netsh interface portproxy commands:
+https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-interface-portproxy#delete-v4tov4

@@ -32,13 +32,21 @@ docker run --hostname=d6780ede965f --user=mssql --env='MSSQL_PID=Express' --env=
 
 
 
-
+docker run -p 88:88 khoale111/sams-project:latest44
 
 
 
 =======================================
 Capstone project: 
 docker pull khoale111/sams-project:latest55 && docker rm -f 3402ee2a86e3 && docker run --network my_network -p 80:80 -p 8080:8080 -p 8081:8081 -p 444:444 -p 443:443 -d khoale111/sams-project:latest55
+
+docker run -p 81:80 -p 446:443 -d khoale111/sams-web:latest
+
+
+docker pull khoale111/sams-project:latest11
+docker run --name sams-be -p 80:80 -p 8080:8080 -p 8081:8081 -p 444:444 -p 443:443 -d khoale111/sams-project:latest11
+
+
 
 
 

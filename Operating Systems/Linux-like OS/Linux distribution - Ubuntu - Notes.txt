@@ -188,6 +188,15 @@ file sh is a file shell script like 'run.sh' which can be run when click or call
 
 = sudo gpasswd -d <user_name> <group_name>: Remove a user from a group.
 
+=================================================================================
+
+= cat /etc/passwd: list all users with more detail
+
+= cat /etc/group: list all groups with more detail
+
+= whoami: get current login user
+
+= groups <username>: see which groups a specific user belongs to
 
 
 

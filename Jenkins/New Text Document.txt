@@ -1,0 +1,67 @@
+docker run --name jenkins-blueocean --restart=on-failure --detach ^
+  --network jenkins --env DOCKER_HOST=tcp://docker:2376 ^
+  --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume jenkins-docker-certs:/certs/client:ro ^
+  --publish 8082:8080 --publish 50000:50000 myjenkins-blueocean:2.479.1-1
+
+
+docker run --name jenkins-blueocean --restart=on-failure --detach ^
+  --network jenkins ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume jenkins-docker-certs:/certs/client:ro ^
+  --volume /var/run/docker.sock:/var/run/docker.sock ^
+  --publish 8082:8080 --publish 50000:50000 myjenkins-blueocean:2.479.1-1
+
+
+docker run --name jenkins-blueocean --restart=on-failure --detach ^
+  --network jenkins ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume /var/run/docker.sock:/var/run/docker.sock ^
+  --publish 8082:8080 --publish 50000:50000 myjenkins-blueocean:2.479.1-1
+
+
+
+docker run --name jenkins-blueocean --restart=on-failure --detach ^
+  --network jenkins ^
+  --user root ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume /var/run/docker.sock:/var/run/docker.sock ^
+  --publish 8082:8080 --publish 50000:50000 myjenkins-blueocean:2.479.1-1
+
+
+
+docker run --name jenkins-blueocean --restart=on-failure --detach ^
+  --network jenkins --env DOCKER_HOST=tcp://host.docker.internal:2375 ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --publish 8082:8080 --publish 50000:50000 myjenkins-blueocean:2.479.1-1
+
+
+
+
+====================================================
+
+FIX: Jenkins can not connect to docker daemon on port 2376
+
+
+
+
+docker run --name jenkins-blueocean --restart=on-failure --detach ^
+  --network jenkins --env DOCKER_HOST=tcp://docker:2375 ^
+  --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --volume jenkins-docker-certs:/certs/client:ro ^
+  --publish 8082:8080 --publish 50000:50000 myjenkins-blueocean:2.479.1-1
+
+
+
+
+
+
+
+
+docker build -t myjenkins-blueocean:2.479.1-1 .
+
+
+
+docker context create mydesktop --docker "host=tcp://localhost:2375"
