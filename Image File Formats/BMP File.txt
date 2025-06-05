@@ -1,0 +1,45 @@
+1. Simple - Highly standardized and widespread.
+2. Does not offer significant image compression.
+3. Simple editor can support BMP images due to its simplicity.
+4. Hence widely used.
+5. BMP section is broken into 4 sections:
+  + File Header
+  + Image header
+  + Color table
+  + Pixel data
+
+- The File header (14 bytes) contains information about file size and location at which data is stored.
+
+- The Image header (40 bytes) tells information about rows and columns of an image, bits per pixel, type of compression used if any.
+
+- The color table provides color palette.
+
+- Pixel data is written in bottom to top fashion. Row starts with double word boundaries.
+
+- Each row is written left to right.
+
+
+
+*** Bits Per Pixel Field
+1 bit: The bimap is monochrome, and the palette contains two entries. Each bit in the bitmap array represents a pixel. If the bit is clear, the pixel is displayed with the color of the first entry in the palette; if the bit is set, the pixel has the color of the second entry in the table.
+
+4 bits (half byte): The bimap has a maximum of 16 colors, and the palette contains up to 16 entries. Each pixel in the bitmap is represented by a 4-bit index into the palette. For example, if the first byte in the bitmap is 1Fh, the byte represent two pixel. The first piel contains the color in the second palette entry, and the second pixel contains the color in the sixteenth palette entry.
+
+8 bits (1 byte): The bitmap has maximum of 256 colors, and the palette contains up to 256 entries. In this case, each byte in the array represents a single pixel.
+
+16 bits: The bimap has a maximum of 2^16 colors. 
+If the compression filed of the bitmap is set to BI_RGB, the Palette field does not contain any entries. Each word in the bitmap array represents a single pixel. The relative intensities of red, green, and blue are represented with 5 bits for each color component. The value for blue is in the least significant 5 bits, followed by 5 bits each for green and red, respectively. The most significant bit is not used.
+If the Compression filed of the bitmap file is set to BI_BITFIELDS, the Palette field contains three 4 byte color masks that specify the red, green, and blue componenets, respectively, of each pixel. Each 2 bytes in the bitmap array represents a single pixel.
+
+24 bits: The bitmap has a maximum of 2^24 colors, and the Palette field does not contain any entries. Each 3-byte triplet in the bitmap array represents the relative intensities of blue, green, and red, respectively, for a pixel.
+
+
+
+
+
+
+References: 
+
+https://www.cs.sjsu.edu/faculty/pollett/masters/Semesters/Fall18/kunal/Slides/Image_file_formats.pdf
+
+https://www.ece.ualberta.ca/~elliott/ee552/studentAppNotes/2003_w/misc/bmp_file_format/bmp_file_format.htm

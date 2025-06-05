@@ -1,0 +1,13 @@
+TrueType font files are made up of a number of tables, some mandatory (such as 'glyf' table containing glyph outlines), others optional (like the 'kern' table). TrueType was designed this way to make the format extensible. Microsoft has taken full advantage of this in defining tables for the TrueType Open and, with Adobe, the openType initiative.
+
+TrueType is Apple's invention, and they've now got their act together and have provided good online documentation for standard TrueType, as well as its big brother TrueType GX.
+
+USING TRUETYPE SPECIFICATION: TO EXTRACT GLYPHS AND DRAW IT PIXEL BY PIXEL TO IMAGE.
+
+A complete specification of the format in which TrueType glyph outlines are represented in a font file is provided in TrueType Font files.
+
+
+
+
+
+

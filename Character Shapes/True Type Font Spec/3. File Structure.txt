@@ -1,0 +1,38 @@
+Within this specification, many structures are defined in terms of the data types listed above. Structures are characterized as either records or tables. The distinction between records and tables is based on these general criteria:
++ Tables are referenced by offsets. If a table contains an offset to a sub-structure, the offset is normally from the start of that table.
++ Records occur sequentially within a parent structure, either within a sequence of table fields or within an array of records of a given type. If a record contains an offset to a sub-structure, that structure is logically a subtable of the record’s parent table and the offset is normally from the start of the parent table.
+
+
+
+============================================
+cmap table:
+ This table defines the mapping of character codes to a default glyph index. Different subtables may be defined that each contain mappings for different character encoding schemes. The table header indicates the character encodings for which subtables are present.
+
+ Regardless of the encoding scheme, character codes that do not correspond to any glyph in the font should be mapped to glyph index 0 (representing a missing character, commonly known as .notdef.)
+
+ Each subtable is in one of seven possible formats:
+  + formats 0, 2, 4 and 6: allow for 8-bit single-byte, 8-bit multi-byte, and 16-bit encodings
+  + formats 8, 10 and 12: allow for 32-bit encoding schemes.
+
+ The encoding record entries in the 'cmap' header must be sorted first by platform ID, then by platform-specific encoding ID, and then by the language field in the corresponding subtable.
+
+
+
+
+=====================================================
+glyf table:
++ Contains the data that defines the appearance of the glyphs in the font
+
++ This includes specification of the points that describe the contours that make up a glyph outline and the instructions that grid-fit that glyph
+
++ supports the definition of simple glyphs and compound glyphs, that is, glyphs that are made up of other glyphs.
+
++ The number of glyphs in the font is restricted only by the value stated in the 'head' table
+
+
+
+Glyph Data:
++ If the number of contours is positive or zero, it is a single glyph;
+  If the number of contours less than zero, the glyph is compound
+
++ The minimum and maximum x and y values for the coordinate data in the glyph follow and together define the glyph's bounding box. This is the bounding box for the original glyph outline before any grid-fitting has taken place.

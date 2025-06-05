@@ -1,0 +1,34 @@
+State the general rules for character shapes in Latin languages in digital fonts.
+
+Primarily defining the guidelines designers use for character alignments, both vertical and horizontal and how these relate to other similar characters or character groups
+
+=============================================================
+=============================================================
+
+Character design standards
+
+
+
+==============================================================
+			Uppercase for Latin 1
+
+1. Width rule: 
+- All glyphs in proportionally spaced typefaces have advanced widths that are dependent on their proportional design.
+
+2. Vertical alignment rule:
+- This is the value of uppercase flat heights such as the top of the B,D,E,F,H,I,J,K,L,M,N,P,R,T,U,V,W,X,Y and Z in most typefaces.
+- All other uppercase flat characters that have the same top feature should be at the same value exactly in most text fonts.
+
+
+3. Round overshoot values rule:
+- This is the value of uppercase round heights such as the C,G,O,Q,S,J and U.
+- All other uppercase round characters that have the same top and bottom feature should be at the same value exactly in most text fonts. They should overshoot the baseline of the flat characters the same amount as the top overshoots the uppercase flat characters.
+
+
+
+
+
+
+
+
+

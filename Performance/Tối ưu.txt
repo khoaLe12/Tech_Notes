@@ -1,0 +1,39 @@
+1. Database
+- Sử dụng Index cho các cột thường được lọc hoặc tìm kiếm: Sử dụng câu lệnh WHERE trên các cột đc index cần hợp lý để tối ưu hóa hiệu suất, ko nên dùng function. vd: YEAR(), ...
+- Đơn giản hóa các phép kết Join: có thể sử dụng câu truy vấn lồng, truy vấn tách rời, dùng VIEW để lưu trữ tạm thời những kết quả truy vấn kết nối phức tạp
+
+
+
+2. LINQ and EF Core: 
+- Xây dựng và sắp xếp các câu truy vấn từ các phương thứ LINQ theo 1 thứ tự phù hợp, EX: Where nên đặt sớm nhất có thể, ToList nên đặt trễ/sau cùng nhất có thể
+- Viết các câu lệnh truy vấn sạch hơn: 
+- Projection: sử dụng phép chiếu từ câu lệnh Select để chỉ lấy ra những cột cần trả về, giảm thiểu khối lượng kết quả trả về
+- Bulk operations: Thực hiện truy vấn trực tiếp vào hệ cơ sở dữ liệu bằng 1 câu lệnh đơn nhất, thực hiện chỉnh sửa dữ liệu không cần tải kết quả truy vấn vào bộ nhớ In-memory
+- Sử dụng split query cho những câu truy vấn yêu cầu dùng phép kết nhiều
+- Hạn chế thực hiện truy vấn nhiều lần, nên tìm cách gom nhóm các lệnh trong 1 lần kết nối
+- Phân trang, sử dụng Non-tracking giảm thiểu áp lực lên ChangeTracker, thực hiện đa truy vấn cùng 1 lúc sử dụng nhiều DbContext.
+- Sử dụng các lệnh truy vấn đã đc xây dựng từ trc (compiled query)
+- Nếu việc truy vấn quá phức tạp, nên viết các câu lệnh truy vấn thô hoặc viết các thủ tục
+
+
+
+3. Programming
+- Lập trình bất đồng bộ, song song (ko theo dõi state của các item đc, các item đc thực thi 1 cách ngẫu nhiên ko có thứ tự), đa luồng: tận dụng tối đa tài nguyên và sức mạnh của máy tính, ngăn chặn tình trạng tắc nghẽn luồng hoat4 động (I/O blocking)
+- Giảm thiểu áp lực lên Garbage Collection (GC): 
++ Sử dụng bộ nhớ hiệu quả: sử dụng kiểu dữ liệu phù hợp, hạn chế cấp phát và hủy cấp phát vùng nhớ, tái sử dụng các biến đã đc khai báo, tránh Boxing/Unboxing
++ Sử dụng bô nhớ Stack thay vì Heap: Span<T>, Memory<T>, ref struct
++ Làm việc vs string hiệu quả thông qua StringBuilder
+
+
+
+
+
+4. Network
+- Tăng tốc độ băng thông, giảm khối lượng truyền tải: nén dữ liệu trc khi gửi đi và trả về, sử dụng các giao thức hiệu quả hơn
+
+
+
+5. System Architech:
+- Caching, Rate Limitting, Load Balancing
+- Mở rộng server theo chiều dọc (nâng cấp server)
+- Mở rộng server theo chiều ngang (tạo thêm nhiều server)
